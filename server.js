@@ -67,18 +67,13 @@ twit
     }
   });
 
-twit.stream('user', {track:'dog'}, function(stream) {
+twit.stream('user', {track:'dogs'}, function(stream) {
   stream.on('data', function (data) {
-    console.log(data.text);
-  });
-  stream.on('end', function (response) {
-    // Handle a disconnection
-  });
-  stream.on('destroy', function (response) {
-    // Handle a 'silent' disconnection from Twitter, no end/error event fired
-  });
-  // Disconnect stream after five seconds
-  setTimeout(stream.destroy, 20000);
+    socket.emit('tweet', data)
+    console.log(data)
+});
+
+  setTimeout(stream.destroy, 5000);
 });
 
 
