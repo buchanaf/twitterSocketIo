@@ -77,3 +77,11 @@ body {
     border-bottom: 0;
   }
 }
+
+.input-group {
+  padding-top: 20px;
+}
+
+.messages {
+  clear: both;
+}

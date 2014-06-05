@@ -5,16 +5,9 @@ angular.module('socketIoTwitterApp')
     var socket = io();
     $scope.tweets = [];
     socket.on('tweet', function(data){
-      $scope.tweets.push(data.text);
-      $scope.$apply()
+      if(data && data.user.name && data.user.location){
+        $scope.tweets.push(data);
+        $scope.$apply();
+      }
     })
-
-    console.log($scope.tweets);
-    console.log($scope.tweets.length);
-
-
-    $scope.test2 = [undefined, {},{},{},4,5]
-    $scope.test = "Hello";
-
-
   });

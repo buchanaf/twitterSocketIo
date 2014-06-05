@@ -3,13 +3,23 @@
 <div class="jumbotron">
   <h1>'Allo, 'Allo <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
 </div>
+ <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Go!</button>
+      </span>
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 
-<ul class="list-unstyled">
-  <li ng-repeat="message in tweets">{{message}}</li>
-</ul>
-
-
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
+<div class="messages">
+  <ul class="list-unstyled">
+    <li ng-repeat="message in tweets"><strong>{{message.user.name}} -</strong> {{message.text}}<br>
+      <i><b>--{{message.user.location}}</b></i>
+    </li>
+  </ul>
 </div>
+
+
+
