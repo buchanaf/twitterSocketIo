@@ -1,14 +1,15 @@
 <div ng-include="'partials/navbar'"></div>
 
 <div class="jumbotron">
-  <h1>'Allo, 'Allo <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
+  <img tag='logo' src="../../images/twitter_logo.png">
 </div>
  <div class="col-lg-6">
     <div class="input-group">
-      <input type="text" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Go!</button>
-      </span>
+        <input type="text" class="form-control" ng-model="phrase">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button" ng-click="getTweets(phrase)">Go!</button>
+          <button class="btn btn-default" type="button" ng-click="endStream()">End!</button>
+        </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->

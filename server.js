@@ -40,7 +40,7 @@ var server =  app.listen(config.port, config.ip, function () {
   console.log('Express server listening on %s:%d, in %s mode', config.ip, config.port, app.get('env'));
 });
 
-socket(server);
+var socketConnect = new socket(server);
 // // Connect Socket
 
 
