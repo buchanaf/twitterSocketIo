@@ -47,6 +47,8 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  height: 450px;
+
 }
 .jumbotron .btn {
   font-size: 21px;
@@ -86,8 +88,14 @@ body {
 
 .messages {
   clear: both;
+  text-align: left;
 }
 
 img {
   width:60%;
+}
+
+.tweets {
+  animation-delay:10s;
+  -webkit-animation-delay:10s; /* Safari and Chrome */
 }
