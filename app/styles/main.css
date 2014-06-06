@@ -1,4 +1,6 @@
 /* Space out content a bit */
+
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -84,4 +86,8 @@ body {
 
 .messages {
   clear: both;
+}
+
+img {
+  width:60%;
 }

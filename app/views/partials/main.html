@@ -8,15 +8,15 @@
         <input type="text" class="form-control" ng-model="phrase">
         <span class="input-group-btn">
           <button class="btn btn-default" type="button" ng-click="getTweets(phrase)">Go!</button>
-          <button class="btn btn-default" type="button" ng-click="endStream()">End!</button>
+          <button class="btn btn-default" type="button" ng-click="endTweets()">End!</button>
         </span>
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
 
 <div class="messages">
-  <ul class="list-unstyled">
-    <li ng-repeat="message in tweets"><strong>{{message.user.name}} -</strong> {{message.text}}<br>
+  <ul class="list-group">
+    <li ng-repeat="message in tweets" class="list-group-item"><strong>{{message.user.name}} -</strong> {{message.text}}<br>
       <i><b>--{{message.user.location}}</b></i>
     </li>
   </ul>
