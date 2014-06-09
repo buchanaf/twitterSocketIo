@@ -19,7 +19,8 @@
     "ejs": "~0.8.4",
     "socket.io": "^1.0.4",
     "ntwitter": "^0.5.0",
-    "twitter": "^0.2.9"
+    "twitter": "^0.2.9",
+    "passport-twitter": "^1.0.2"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -96,6 +96,13 @@ img {
 }
 
 .tweets {
-  animation-delay:10s;
-  -webkit-animation-delay:10s; /* Safari and Chrome */
+  color: red;
+  /*-webkit-animation-delay:10s;
+  animation-delay:10s;*/
 }
+
+.globe {
+  float: right;
+  clear:both;
+}
+

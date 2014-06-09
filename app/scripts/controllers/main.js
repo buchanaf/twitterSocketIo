@@ -10,11 +10,13 @@ angular.module('socketIoTwitterApp')
         if($scope.tweets.length>=4){
           return
         }
+
         $scope.tweets.unshift(data);
         $scope.$apply();
+
         setTimeout(function(){
-          $scope.tweets.pop();
-          console.log("POPPING")
+            $scope.tweets.pop();
+            $scope.$apply();
         }, 10000);
       }
     })
@@ -27,5 +29,15 @@ angular.module('socketIoTwitterApp')
     $scope.endTweets = function () {
       socket.emit('tweet-end')
     };
+
+    $http({
+      method: 'GET',
+      url: '/api/followers',
+      params: {user_name:'to_thenines'}
+    })
+    .success(function(data){
+      $scope.followers = data
+      console.log($scope.followers)
+    });
 
   });
