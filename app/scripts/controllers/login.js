@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('socketIoTwitterApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $http) {
     $scope.user = {};
     $scope.errors = {};
 
     $scope.login = function(form) {
       $scope.submitted = true;
-      
+
       if(form.$valid) {
         Auth.login({
           email: $scope.user.email,
@@ -22,5 +22,11 @@ angular.module('socketIoTwitterApp')
           $scope.errors.other = err.message;
         });
       }
+    };
+
+    $scope.twitterlogin = function(){
+      $http.get('/api/twitterlogin').success(function(){
+        console.log(data)
+      });
     };
   });

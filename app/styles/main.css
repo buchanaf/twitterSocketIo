@@ -97,8 +97,8 @@ img {
 
 .tweets {
   color: red;
-  /*-webkit-animation-delay:10s;
-  animation-delay:10s;*/
+  -webkit-animation-delay:10s;
+  animation-delay:10s;
 }
 
 .globe {
