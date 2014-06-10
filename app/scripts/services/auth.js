@@ -4,7 +4,8 @@ angular.module('socketIoTwitterApp')
   .factory('Auth', function Auth($location, $rootScope, Session, User, $cookieStore) {
 
     // Get currentUser from cookie
-    $rootScope.currentUser = $cookieStore.get('user') || null;
+
+    $rootScope.currentUser = $cookieStore.get('name') || null;
     $cookieStore.remove('user');
 
     return {
