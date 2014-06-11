@@ -6,7 +6,7 @@ angular.module('socketIoTwitterApp')
     // Get currentUser from cookie
 
     $rootScope.currentUser = $cookieStore.get('name') || null;
-    $cookieStore.remove('user');
+    // $cookieStore.remove('user');
 
     return {
 

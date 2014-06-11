@@ -24,9 +24,5 @@ angular.module('socketIoTwitterApp')
       }
     };
 
-    $scope.twitterlogin = function(){
-      $http.get('/api/twitterlogin').success(function(data){
-        console.log(data);
-      });
-    };
+
   });
