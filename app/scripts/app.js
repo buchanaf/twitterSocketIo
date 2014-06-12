@@ -11,7 +11,8 @@ angular.module('socketIoTwitterApp', [
     $routeProvider
       .when('/', {
         templateUrl: 'partials/main',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        authenticate: true
 
       })
       .when('/login', {

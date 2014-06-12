@@ -6,9 +6,8 @@ var express = require('express'),
     mongoose = require('mongoose'),
     socket = require('./lib/controllers/socket').startStream,
     TwitterStrategy = require('passport-twitter').Strategy,
-    // twitterlogin = require('./lib/controllers/twitterlogin').twitterlogin
     passport = require('passport');
-    // User = mongoose.model('User');
+
 
 
 /**

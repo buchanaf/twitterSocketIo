@@ -25,15 +25,12 @@ angular.module('socketIoTwitterApp')
 
     socket.on('tweet', function(data){
       if(data.tweeter && data.tweeter.user.name && data.tweeter.user.location){
-
         if($scope.tweets.length>=3){
           return
         }
 
-
         $scope.tweets.unshift(data.tweeter);
         $scope.$apply();
-
         setTimeout(function(){
             $scope.tweets.pop();
             $scope.$apply();
@@ -43,7 +40,7 @@ angular.module('socketIoTwitterApp')
 
     socket.on('hashtags', function(data){
       $scope.hashtags = data.hashtags
-      $scope.hashtags = $scope.hashtags.slice(0,5)
+      $scope.hashtags = $scope.hashtags.slice(0,20)
       $scope.$apply()
     })
 
@@ -51,6 +48,7 @@ angular.module('socketIoTwitterApp')
       socket.emit('tweet-start', phrase);
       $scope.streaming = false;
       $scope.phrase = "";
+      $scope.currentTerm = phrase
       $scope.$apply();
     };
 

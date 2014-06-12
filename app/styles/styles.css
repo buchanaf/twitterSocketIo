@@ -207,3 +207,7 @@ h3,h4,h5,.panel {
   animation-delay: 2s;
   -webkit-animation-delay: 2s; /* Safari and Chrome */
 }
+
+#hashtags {
+  padding-top: 30px
+}
