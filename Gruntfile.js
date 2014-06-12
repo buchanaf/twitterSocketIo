@@ -311,7 +311,9 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
-            'fonts/**/*'
+            'fonts/**/*',
+            'scripts/d3globe.js',
+            'scripts/world-110M.json'
           ]
         }, {
           expand: true,
