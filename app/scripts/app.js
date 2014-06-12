@@ -12,7 +12,6 @@ angular.module('socketIoTwitterApp', [
       .when('/', {
         templateUrl: 'partials/main',
         controller: 'MainCtrl',
-        authenticate: true
 
       })
       .when('/login', {
