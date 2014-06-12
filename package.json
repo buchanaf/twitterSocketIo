@@ -20,7 +20,8 @@
     "socket.io": "^1.0.4",
     "ntwitter": "^0.5.0",
     "twitter": "^0.2.9",
-    "passport-twitter": "^1.0.2"
+    "passport-twitter": "^1.0.2",
+    "instagram-node-lib": "^0.1.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
