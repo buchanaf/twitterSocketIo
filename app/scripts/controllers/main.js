@@ -4,6 +4,7 @@ angular.module('socketIoTwitterApp')
   .controller('MainCtrl', function ($scope, $http, Session, $rootScope) {
     var socket = io();
     $scope.tweets = [];
+    $scope.hashtags = [];
     $scope.streaming = true;
     $scope.success = false;
     $scope.retweetResult = "Tweet Success";
@@ -23,11 +24,14 @@ angular.module('socketIoTwitterApp')
     })
 
     socket.on('tweet', function(data){
-      if(data && data.user.name && data.user.location){
+      if(data.tweeter && data.tweeter.user.name && data.tweeter.user.location){
+
         if($scope.tweets.length>=3){
           return
         }
-        $scope.tweets.unshift(data);
+
+
+        $scope.tweets.unshift(data.tweeter);
         $scope.$apply();
 
         setTimeout(function(){
@@ -37,8 +41,13 @@ angular.module('socketIoTwitterApp')
       }
     })
 
-    $scope.getTweets = function (phrase) {
+    socket.on('hashtags', function(data){
+      $scope.hashtags = data.hashtags
+      $scope.hashtags = $scope.hashtags.slice(0,5)
+      $scope.$apply()
+    })
 
+    $scope.getTweets = function (phrase) {
       socket.emit('tweet-start', phrase);
       $scope.streaming = false;
       $scope.phrase = "";
@@ -59,7 +68,7 @@ angular.module('socketIoTwitterApp')
         })
         .success(function(data){
           $scope.success = true;
-          $scope.apply();
+          $scope.$apply();
       });
     }
 

@@ -31,6 +31,9 @@
                 <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
               </ul>
               <ul>
+                <li ng-repeat="hash in hashtags">
+                 {{hash.name}} : {{hash.val}}
+                </li>
               </ul>
             </div>
            </div>
