@@ -52,7 +52,7 @@
                         <ul id="tweet-messages" class="list-group">
                           <li ng-repeat="message in tweets" class="tweets list-group-item" >
                             <div>
-                              <label><b>NAME:</b> {{message.user.name}}</label><button class="message-name btn btn-info" ng-click='retweet(message.id_str)' height=>Retweet</button>
+                              <label><b>NAME:</b> {{message.user.name}}</label><button class="message-name btn btn-info" ng-click='retweet(message.id_str)'>Retweet</button>
                             </div>
                               <p><b>MESSAGE:</b> {{message.text}}</p>
                               <p><b>LOCATION:</b> {{message.user.location}}</p>
