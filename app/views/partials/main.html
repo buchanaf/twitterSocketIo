@@ -30,7 +30,8 @@
                 <li ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
                 <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
               </ul>
-
+              <ul>
+              </ul>
             </div>
            </div>
         </div><!--/sidebar-->
@@ -40,12 +41,14 @@
           <div class="row">
              <div class="col-sm-6">
                 <div class="panel panel-default">
-                  <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Newest Items</h4></div>
+                  <div class="panel-heading"><label class="success-message pull-right animated fadeOut" ng-show="success">{{retweetResult}}</label><h4>Newest Items</h4></div>
                     <div class="panel-body">
                       <div class="list-group">
                         <ul id="tweet-messages" class="list-group">
-                          <li ng-repeat="message in tweets" class="tweets list-group-item" ng-modal='{{message.id}}'>
-                              <p><b>NAME:</b> {{message.user.name}}</p>
+                          <li ng-repeat="message in tweets" class="tweets list-group-item" >
+                            <div>
+                              <label><b>NAME:</b> {{message.user.name}}</label><button class="message-name btn btn-info" ng-click='retweet(message.id_str)' height=>Retweet</button>
+                            </div>
                               <p><b>MESSAGE:</b> {{message.text}}</p>
                               <p><b>LOCATION:</b> {{message.user.location}}</p>
                           </li>
@@ -53,7 +56,6 @@
                       </div>
                     </div><!--/panel-body-->
                 </div><!--/panel-->
-
                 <div class="well">
                      <form class="form-horizontal" role="form">
                       <h4>What's New</h4>

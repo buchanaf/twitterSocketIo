@@ -5,7 +5,10 @@ angular.module('socketIoTwitterApp')
     var socket = io();
     $scope.tweets = [];
     $scope.streaming = true;
-    socket.emit('tweet-end')
+    $scope.success = false;
+    $scope.retweetResult = "Tweet Success";
+
+    socket.emit('tweet-end');
 
     Session.get({}, function(data){
       $rootScope.currentUser = data;
@@ -15,7 +18,6 @@ angular.module('socketIoTwitterApp')
         params: {user_name: $rootScope.currentUser.name}
       })
       .success(function(data){
-        console.log(data);
         $scope.followers = data;
       });
     })
@@ -25,7 +27,6 @@ angular.module('socketIoTwitterApp')
         if($scope.tweets.length>=3){
           return
         }
-        console.log(data)
         $scope.tweets.unshift(data);
         $scope.$apply();
 
@@ -50,12 +51,16 @@ angular.module('socketIoTwitterApp')
       $scope.$apply();
     };
 
-    $http({
-        method: 'post',
-        url: '/api/followers'
-      })
-      .success(function(data){
-        console.log(data);
-    });
+    $scope.retweet = function(id){
+      $http({
+          method: 'post',
+          url: '/api/followers',
+          params: {id: id}
+        })
+        .success(function(data){
+          $scope.success = true;
+          $scope.apply();
+      });
+    }
 
   });

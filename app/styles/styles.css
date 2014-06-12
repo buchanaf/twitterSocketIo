@@ -198,3 +198,12 @@ h3,h4,h5,.panel {
 #globe {
   padding:10px 0 0 90px;
 }
+
+.message-name {
+  float: right;
+}
+
+.success-message {
+  animation-delay: 2s;
+  -webkit-animation-delay: 2s; /* Safari and Chrome */
+}
