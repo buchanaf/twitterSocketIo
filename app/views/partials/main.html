@@ -11,7 +11,7 @@
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
            </button>
-           <a class="navbar-brand" href="#">Bootstrap Holo</a>
+           <h2>TWITTERSPHERE</h2>
       </div>
     </nav>
 
@@ -32,7 +32,7 @@
                 <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
               </ul>
               <h4 id="hashtags">POPULAR HASHTAGS</h4>
-              <ul>
+              <ul id="hashcounter">
                 <li ng-repeat="hash in hashtags">
                  ({{$index+1}}) {{hash.name}} : {{hash.val}}
                 </li>
@@ -52,10 +52,10 @@
                         <ul id="tweet-messages" class="list-group">
                           <li ng-repeat="message in tweets" class="tweets list-group-item" >
                             <div>
-                              <label><b>NAME:</b> {{message.user.name}}</label><button class="message-name btn btn-info" ng-click='retweet(message.id_str)'>Retweet</button>
+                              <label><b>NAME:</b> {{message.user.name}}</label><button class="message-name btn btn-info pull-right" ng-click='retweet(message.id_str)'>Retweet</button><br>
+                              <span class='messagetext'><b>MESSAGE:</b> {{message.text}}</span><br>
+                              <span class='location'><b>LOCATION:</b> {{message.user.location}}</span>
                             </div>
-                              <p><b>MESSAGE:</b> {{message.text}}</p>
-                              <p><b>LOCATION:</b> {{message.user.location}}</p>
                           </li>
                         </ul>
                       </div>
@@ -63,33 +63,25 @@
                 </div><!--/panel-->
                 <div class="well">
                    <form class="form-horizontal" role="form">
-                    <h4>TWEET SEARCH TERM</h4><label class='currentmessage pull-right' ng-show="currentTerm">Search Term: {{currentTerm.toUpperCase()}}</label>
+                    <div>
+                      <p class ='search'>TWEET SEARCH TERM</p>
+                      <p class=' search pull-right' ng-show="currentTerm">Search Term: {{currentTerm.toUpperCase()}}</p>
+                    </div>
                     <form name="tweetSearch">
                       <div class="form-group" style="padding:14px;">
-                        <textarea class="form-control" placeholder="Search" ng-model="phrase"></textarea>
+                        <input type="text" class="form-control" placeholder="Search" ng-model="phrase"></input>
                       </div>
                       <span class="input-group-btn">
-                        <button class="btn btn-success pull-left" ng-show="streaming" type="button" ng-click="getTweets(phrase)">Go!</button>
-                        <button class="btn btn-success pull-right" ng-show="!streaming" type="button" ng-click="endTweets()">End!</button>
+                        <button class="start btn btn-success pull-left" ng-show="streaming" type="button" ng-click="getTweets(phrase)">Go!</button>
+                        <button class="end btn btn-success pull-right" ng-show="!streaming" type="button" ng-click="endTweets()">End!</button>
                       </span>
                   </form>
                 </div><!--/well-->
             </div><!--/col-->
             <div class="col-sm-6">
-                 <div class="panel panel-default">
-                   <div class="panel-heading"><h4>TWEETS AROUND THE WORLD</h4></div>
-                    <div class="panel-body">
-                      <canvas id='globe'width="400" height='400'></canvas>
-                    </div><!--/panel-body-->
-                 </div><!--/panel-->
-                 <!-- <div class="panel panel-default">
-                   <div class="panel-heading"><a href="#" class="pull-right">View all</a> <h4>Portlet Heading</h4></div>
-                    <div class="panel-body">
-                      <ul id="tweet-messages" class="list-group">
 
-                      </ul>
-                    </div><!--/panel-body-->
-                 <!-- </div> --><!--/panel-->
+                      <canvas id='globe' height="400px" width="400px" style="width:80%"></canvas>
+
               </div><!--/col-->
           </div><!--/row-->
 

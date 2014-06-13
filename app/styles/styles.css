@@ -9,7 +9,7 @@ license: MIT
 author: bootply.com
 */
 
-@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700)
+
 
 html,body {
   height: 100%;
@@ -195,12 +195,13 @@ h3,h4,h5,.panel {
   height:460px;
 }
 
-#globe {
-  padding:10px 0 0 90px;
-}
+
 
 .message-name {
-  float: right;
+  width: 60px;
+  height: 30px;
+  font-size: 12px;
+  padding: 0 0 0 0;
 }
 
 .success-message {
@@ -210,4 +211,51 @@ h3,h4,h5,.panel {
 
 #hashtags {
   padding-top: 30px
+}
+
+#hashcounter {
+  list-style-type: none;
+}
+
+#globe {
+  max-height: 440px;
+  padding: 50px ;
+}
+
+.tweets {
+
+}
+
+.messagelocation{
+  top-padding:-30px;
+}
+
+.navbar {
+  background-color: #f5f5f5;
+  color:black;
+  height: 70px;
+}
+
+#green {
+  margin-bottom: 20px;
+}
+
+.new-account{
+  color:black;
+}
+
+.start {
+  padding:0 0 0 0;
+  width: 80px;
+  height: 40px;
+}
+
+.end {
+  padding:0 0 0 0;
+  width: 80px;
+  height: 40px;
+}
+
+.search {
+  display: inline;
 }
