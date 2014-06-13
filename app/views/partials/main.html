@@ -11,7 +11,7 @@
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
            </button>
-           <h2>TWITTERSPHERE</h2>
+           <h2 id='greeting'>TWITTERSPHERE</h2>
       </div>
     </nav>
 
@@ -61,29 +61,31 @@
                       </div>
                     </div><!--/panel-body-->
                 </div><!--/panel-->
+            </div><!--/col-->
+
+              <div class="col-sm-6">
                 <div class="well">
-                   <form class="form-horizontal" role="form">
+                   <form name='searchterm' class="form-horizontal" role="form">
                     <div>
                       <p class ='search'>TWEET SEARCH TERM</p>
-                      <p class=' search pull-right' ng-show="currentTerm">Search Term: {{currentTerm.toUpperCase()}}</p>
+                      <p class=' search' ng-show="currentTerm">Search Term: {{currentTerm.toUpperCase()}}</p><br>
+                      <span class="error" ng-show="searchterm.searchphrase.$error.minlength">
+      Input too short!</span>
                     </div>
                     <form name="tweetSearch">
                       <div class="form-group" style="padding:14px;">
-                        <input type="text" class="form-control" placeholder="Search" ng-model="phrase"></input>
+                        <input  name='searchphrase' type="text" class="form-control" placeholder="Search" ng-model="phrase" ng-minlength="4"></input>
                       </div>
                       <span class="input-group-btn">
-                        <button class="start btn btn-success pull-left" ng-show="streaming" type="button" ng-click="getTweets(phrase)">Go!</button>
+                        <button class="start btn btn-success pull-left" ng-show="streaming" type="button" ng-click="getTweets(phrase)" ng-disabled="searchterm.searchphrase.$error.minlength || searchterm.searchphrase.$pristine">Go!</button>
                         <button class="end btn btn-success pull-right" ng-show="!streaming" type="button" ng-click="endTweets()">End!</button>
                       </span>
                   </form>
                 </div><!--/well-->
-            </div><!--/col-->
-            <div class="col-sm-6">
-
-                      <canvas id='globe' height="400px" width="400px" style="width:80%"></canvas>
-
+                <canvas id='globe' height="400px" width="400px" style="width:80%"></canvas>
               </div><!--/col-->
           </div><!--/row-->
+
 
 
 
@@ -104,14 +106,14 @@
   </div><!--/.container-->
 </div><!--/.page-container-->
 
-<footer><!--footer-->
-  <div class="container">
-        <div class="row">
-          <ul class="list-unstyled text-right">
-          </ul>
-    </div><!--/row-->
-    </div><!--/container-->
-</footer>
+<!-- <footer><!--footer-->
+  <!-- <div class="container"> -->
+        <!-- <div class="row"> -->
+          <!-- <ul class="list-unstyled text-right"> -->
+          <!-- </ul> -->
+    <!-- </div><!--/row-->
+    <!-- </div>/container -->
+<!-- </footer> -->
 
   <!-- script references -->
   <script src="scripts/d3globe.js"></script>

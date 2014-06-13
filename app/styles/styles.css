@@ -11,6 +11,7 @@ author: bootply.com
 
 
 
+
 html,body {
   height: 100%;
   font-family: 'Droid Sans Mono', sans-serif;
@@ -215,6 +216,7 @@ h3,h4,h5,.panel {
 
 #hashcounter {
   list-style-type: none;
+  padding:0;
 }
 
 #globe {
@@ -222,9 +224,6 @@ h3,h4,h5,.panel {
   padding: 50px ;
 }
 
-.tweets {
-
-}
 
 .messagelocation{
   top-padding:-30px;
@@ -258,4 +257,23 @@ h3,h4,h5,.panel {
 
 .search {
   display: inline;
+}
+
+#greeting {
+  padding: 8px 0 0 30px;
+  margin: 0 0 0 0;
+}
+
+.error {
+  color:red;
+}
+
+.well {
+  width: 54%;
+  margin-left: 50px
+}
+
+#sidebar {
+  padding: 0;
+  margin:0;
 }

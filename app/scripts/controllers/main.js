@@ -8,6 +8,8 @@ angular.module('socketIoTwitterApp')
     $scope.streaming = true;
     $scope.success = false;
     $scope.retweetResult = "Tweet Success";
+    $scope.phrase;
+    console.log($scope.phrase)
 
     socket.emit('tweet-end');
 
