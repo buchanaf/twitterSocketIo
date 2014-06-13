@@ -10,7 +10,7 @@ author: bootply.com
 */
 
 
-
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
 
 html,body {
   height: 100%;
@@ -193,7 +193,7 @@ h3,h4,h5,.panel {
 }
 
 .panel-body{
-  height:460px;
+  height:600px;
 }
 
 
@@ -211,7 +211,7 @@ h3,h4,h5,.panel {
 }
 
 #hashtags {
-  padding-top: 30px
+  padding-top: 15px
 }
 
 #hashcounter {
@@ -277,3 +277,9 @@ h3,h4,h5,.panel {
   padding: 0;
   margin:0;
 }
+
+.tweets{
+  animation-delay: 8s;
+  -webkit-animation-delay: 8s; /* Safari and Chrome */
+}
+

@@ -28,7 +28,6 @@
                     <a ng-href="{{item.link}}">{{item.title}}</a>
                 </li>
                 <li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
-                <li ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
                 <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
               </ul>
               <h4 id="hashtags">POPULAR HASHTAGS</h4>
@@ -50,9 +49,9 @@
                     <div class="panel-body">
                       <div class="list-group">
                         <ul id="tweet-messages" class="list-group">
-                          <li ng-repeat="message in tweets" class="tweets list-group-item" >
+                          <li ng-repeat="message in tweets" class="tweets list-group-item animated fadeOut" >
                             <div>
-                              <label><b>NAME:</b> {{message.user.name}}</label><button class="message-name btn btn-info pull-right" ng-click='retweet(message.id_str)'>Retweet</button><br>
+                              <label><b>NAME:</b> {{message.user.name}}</label><button class="message-name btn btn-info pull-right" ng-click='retweet(message.id_str)' ng-disabled="currentUser.provider !== 'twitter'">Retweet</button><br>
                               <span class='messagetext'><b>MESSAGE:</b> {{message.text}}</span><br>
                               <span class='location'><b>LOCATION:</b> {{message.user.location}}</span>
                             </div>
@@ -67,17 +66,16 @@
                 <div class="well">
                    <form name='searchterm' class="form-horizontal" role="form">
                     <div>
-                      <p class ='search'>TWEET SEARCH TERM</p>
+                      <p class ='search'>TWEET SEARCH TERM</p><br>
                       <p class=' search' ng-show="currentTerm">Search Term: {{currentTerm.toUpperCase()}}</p><br>
                       <span class="error" ng-show="searchterm.searchphrase.$error.minlength">
       Input too short!</span>
                     </div>
-                    <form name="tweetSearch">
                       <div class="form-group" style="padding:14px;">
-                        <input  name='searchphrase' type="text" class="form-control" placeholder="Search" ng-model="phrase" ng-minlength="4"></input>
+                        <input  name='searchphrase' type="text" class="form-control" placeholder="Search" ng-model="phrase" ng-minlength="3"></input>
                       </div>
                       <span class="input-group-btn">
-                        <button class="start btn btn-success pull-left" ng-show="streaming" type="button" ng-click="getTweets(phrase)" ng-disabled="searchterm.searchphrase.$error.minlength || searchterm.searchphrase.$pristine">Go!</button>
+                        <button class="start btn btn-success pull-left" name='start'ng-show="streaming" type="button" ng-click="getTweets(phrase)" ng-disabled="searchterm.searchphrase.$error.minlength || searchterm.searchphrase.$pristine">Go!</button>
                         <button class="end btn btn-success pull-right" ng-show="!streaming" type="button" ng-click="endTweets()">End!</button>
                       </span>
                   </form>
