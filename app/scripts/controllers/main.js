@@ -2,7 +2,10 @@
 
 angular.module('socketIoTwitterApp')
   .controller('MainCtrl', function ($scope, $http, Session, $rootScope) {
+    //initiate socket connection on page open
     var socket = io();
+
+    //set up scope variables for hide/show
     $scope.tweets = [];
     $scope.hashtags = [];
     $scope.streaming = true;
@@ -10,11 +13,12 @@ angular.module('socketIoTwitterApp')
     $scope.retweetResult = "Tweet Success";
     $scope.phrase;
 
-
-
+    //end any open socket connections
     socket.emit('tweet-end');
+
+
+    //get current session
     Session.get({}, function(data){
-      $scope.user = data;
       $rootScope.currentUser = data;
       $http({
         method: 'GET',
