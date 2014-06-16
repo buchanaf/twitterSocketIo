@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('socketIoTwitterApp')
-  .controller('MainCtrl', function ($scope, $http, Session, $rootScope) {
-    //initiate socket connection on page open
-    var socket = io();
+  .controller('MainCtrl', function ($scope, $http, Session, $rootScope, Socket) {
+
 
     //set up scope variables for hide/show
     $scope.tweets = [];
@@ -14,58 +13,44 @@ angular.module('socketIoTwitterApp')
     $scope.phrase;
 
     //end any open socket connections
-    socket.emit('tweet-end');
+    Socket.emit('tweet-end');
 
 
     //get current session
     Session.get({}, function(data){
       $rootScope.currentUser = data;
-      $http({
-        method: 'GET',
-        url: '/api/followers',
-        params: {user_name: $rootScope.currentUser.name}
-      })
-      .success(function(data){
-        console.log(data)
-        $scope.followers = data;
-      });
-    })
+     });
 
-    socket.on('tweet', function(data){
-      if(data.tweeter && data.tweeter.user.name && data.tweeter.user.location){
-        if($scope.tweets.length>=4){
-          return
-        }
+    Socket.on('tweet', function(data){
+      //check to see if the tweet has user, name, and location AND there are not 4 tweets already being displayed on the scope
+      if(data.tweeter && data.tweeter.user && data.tweeter.user.name && data.tweeter.user.location && $scope.tweets.length<4){
 
+        //add tweet to scope
         $scope.tweets.unshift(data.tweeter);
-        $scope.$apply();
+
+        //set time out to remove tweet from scope so new ones can be included
         setTimeout(function(){
             $scope.tweets.pop();
-            $scope.$apply();
         }, 10000);
       }
     })
 
-    socket.on('hashtags', function(data){
+    Socket.on('hashtags', function(data){
       $scope.hashtags = data.hashtags
       $scope.hashtags = $scope.hashtags.slice(0,20)
-      $scope.$apply()
     })
 
     $scope.getTweets = function (phrase) {
-      socket.emit('tweet-start', phrase);
-      console.log($rootScope.currentUser)
+      Socket.emit('tweet-start', phrase);
       $scope.streaming = false;
       $scope.phrase = "";
       $scope.currentTerm = phrase;
-      $scope.$apply();
     };
 
     $scope.endTweets = function () {
-      socket.emit('tweet-end')
+      Socket.emit('tweet-end')
       $scope.streaming = true;
       $scope.searchterm.searchphrase.$setPristine();
-      $scope.$apply();
     };
 
     $scope.retweet = function(id){

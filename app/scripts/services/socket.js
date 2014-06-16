@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('socketIoTwitterApp')
-  .factory('socket', function ($rootScope) {
+  .factory('Socket', function ($rootScope) {
+    //initiate socket connection on page open
     var socket = io.connect();
     return {
       on: function (eventName, callback) {
