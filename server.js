@@ -4,9 +4,10 @@ var express = require('express'),
     path = require('path'),
     fs = require('fs'),
     mongoose = require('mongoose'),
-    socket = require('./lib/controllers/socket').startStream,
     TwitterStrategy = require('passport-twitter').Strategy,
-    passport = require('passport');
+    passport = require('passport'),
+    io = require("socket.io"),
+    socketCtrl = require('./lib/controllers/socket.js');
 
 
 
@@ -46,10 +47,14 @@ var server =  app.listen(config.port, config.ip, function () {
   console.log('Express server listening on %s:%d, in %s mode', config.ip, config.port, app.get('env'));
 });
 
-var socketConnect = new socket(server);
+var socket = io(server);
+
+socket.sockets.on('connection', socketCtrl.respond);
+
 // // Connect Socket
 
 
 
 // Expose app
+module.exports.socket = socket;
 exports = module.exports = app;
