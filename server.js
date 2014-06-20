@@ -7,6 +7,7 @@ var express = require('express'),
     TwitterStrategy = require('passport-twitter').Strategy,
     passport = require('passport'),
     io = require("socket.io"),
+    request =  require('request'),
     socketCtrl = require('./lib/controllers/socket.js');
 
 
@@ -52,7 +53,6 @@ var socket = io(server);
 socket.sockets.on('connection', socketCtrl.respond);
 
 // // Connect Socket
-
 
 
 // Expose app

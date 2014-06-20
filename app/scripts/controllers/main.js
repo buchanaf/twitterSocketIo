@@ -7,6 +7,7 @@ angular.module('socketIoTwitterApp')
     //set up scope variables for hide/show
     $scope.tweets = [];
     $scope.hashtags = [];
+    $scope.pictures = [];
     $scope.streaming = true;
     $scope.success = false;
     $scope.retweetResult = "Tweet Success";
@@ -23,6 +24,8 @@ angular.module('socketIoTwitterApp')
 
     Socket.on('tweet', function(data){
       //check to see if the tweet has user, name, and location AND there are not 4 tweets already being displayed on the scope
+
+
       if(data.tweeter && data.tweeter.user && data.tweeter.user.name && data.tweeter.user.location && $scope.tweets.length<4){
 
         //add tweet to scope
@@ -37,11 +40,23 @@ angular.module('socketIoTwitterApp')
 
     Socket.on('hashtags', function(data){
       $scope.hashtags = data.hashtags
-      $scope.hashtags = $scope.hashtags.slice(0,20)
+      if($scope.hashtags){
+        $scope.hashtags = $scope.hashtags.slice(0,20)
+      }
     })
 
     $scope.getTweets = function (phrase) {
       Socket.emit('tweet-start', phrase);
+      setInterval(function(){
+        $http({
+          method: 'GET',
+          url:'/api/instagram',
+          params: {phrase:phrase}}
+        ).success(function(data){
+          $scope.pictures = data.image
+        })},
+      8000);
+
       $scope.streaming = false;
       $scope.phrase = "";
       $scope.currentTerm = phrase;
@@ -53,13 +68,9 @@ angular.module('socketIoTwitterApp')
       $scope.searchterm.searchphrase.$setPristine();
     };
 
-    $scope.retweet = function(id){
-      $http({
-          method: 'post',
-          url: '/api/followers',
-          params: {id: id}
-        })
-        .success(function(data){
+    $scope.retweet = function (id) {
+      $http.post('/api/followers', {id: id})
+        .success(function(data) {
           $scope.success = true;
           $scope.$apply();
       });

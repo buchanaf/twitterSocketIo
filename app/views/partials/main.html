@@ -2,7 +2,6 @@
 
 <!-- <link rel="stylesheet" href="/styles/styles.css"> -->
 <div class="page-container">
-
   <!-- top navbar -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="navbar-header">
@@ -83,24 +82,11 @@
                 <canvas id='globe' height="400px" width="400px" style="width:80%"></canvas>
               </div><!--/col-->
           </div><!--/row-->
-
-
-
-
-
-
-
-                    </div><!--/panel-body-->
-               </div><!--/panel-->
-           </div><!--/col-6-->
-
-            <div class="clearfix"></div>
-
-
-
-        </div><!--/.col-xs-12-->
-      </div><!--/.row-->
-    </div>
+        </div>
+      </div> <!-- row row-offcanvas  -->
+      <ul>
+        <img ng-repeat='picture in pictures' ng-src="{{picture}}">
+      </ul>
   </div><!--/.container-->
 </div><!--/.page-container-->
 
