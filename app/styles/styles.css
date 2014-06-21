@@ -217,6 +217,7 @@ h3,h4,h5,.panel {
 #hashcounter {
   list-style-type: none;
   padding:0;
+  font-size: 12px;
 }
 
 #globe {
@@ -281,5 +282,9 @@ h3,h4,h5,.panel {
 .tweets{
   animation-delay: 8s;
   -webkit-animation-delay: 8s; /* Safari and Chrome */
+}
+
+.pictures {
+  padding: 10px;
 }
 
