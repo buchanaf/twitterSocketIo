@@ -12,6 +12,7 @@ angular.module('socketIoTwitterApp')
     $scope.success = false;
     $scope.retweetResult = "Tweet Success";
     $scope.phrase;
+    var gramPics;
 
     //end any open socket connections
     Socket.emit('tweet-end');
@@ -47,7 +48,7 @@ angular.module('socketIoTwitterApp')
 
     $scope.getTweets = function (phrase) {
       Socket.emit('tweet-start', phrase);
-      setInterval(function(){
+      gramPics = setInterval(function(){
         $http({
           method: 'GET',
           url:'/api/instagram',
@@ -66,6 +67,7 @@ angular.module('socketIoTwitterApp')
       Socket.emit('tweet-end')
       $scope.streaming = true;
       $scope.searchterm.searchphrase.$setPristine();
+      clearInterval(gramPics);
     };
 
     $scope.retweet = function (id) {
