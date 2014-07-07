@@ -49,6 +49,7 @@ angular.module('socketIoTwitterApp')
     $scope.getTweets = function (phrase) {
       Socket.emit('tweet-start', phrase);
       gramPics = setInterval(function(){
+        $scope.pictures =[];
         $http({
           method: 'GET',
           url:'/api/instagram',
@@ -56,7 +57,7 @@ angular.module('socketIoTwitterApp')
         ).success(function(data){
           $scope.pictures = data.image
         })},
-      8000);
+      10000);
 
       $scope.streaming = false;
       $scope.phrase = "";

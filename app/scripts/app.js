@@ -5,7 +5,8 @@ angular.module('socketIoTwitterApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'btford.socket-io'
+  'btford.socket-io',
+  'iso.directives'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider

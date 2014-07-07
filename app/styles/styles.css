@@ -286,5 +286,7 @@ h3,h4,h5,.panel {
 
 .pictures {
   padding: 10px;
+  height: 250px;
+  width: 250px;
 }
 

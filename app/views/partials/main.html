@@ -84,8 +84,8 @@
           </div><!--/row-->
         </div>
       </div> <!-- row row-offcanvas  -->
-      <ul>
-        <img class='pictures' ng-repeat='picture in pictures' ng-src="{{picture}}">
+      <ul isotope-container class='row'>
+        <img class='pictures col-md-3' ng-repeat='picture in pictures' isotope-item ng-src="{{picture}}">
       </ul>
   </div><!--/.container-->
 </div><!--/.page-container-->
