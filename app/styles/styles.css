@@ -193,7 +193,7 @@ h3,h4,h5,.panel {
 }
 
 .panel-body{
-  height:600px;
+  height:650px;
 }
 
 
@@ -217,7 +217,7 @@ h3,h4,h5,.panel {
 #hashcounter {
   list-style-type: none;
   padding:0;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 #globe {
